@@ -5,6 +5,8 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
 
+import { router as authRouter } from './src/auth/auth.router';
+
 const app = express();
 
 app.use(express.json());
@@ -14,5 +16,7 @@ app.use(morgan('dev'));
 
 // const FRONTEND_DIR = path.join(__dirname, '../../frontend/dist');
 // app.use(express.static(FRONTEND_DIR));
+
+app.use('/api/auth', authRouter);
 
 export default app;

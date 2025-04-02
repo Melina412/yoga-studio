@@ -1,7 +1,7 @@
 import app from './app';
 import 'dotenv/config';
 import path from 'path';
-import { dbConnect } from './storage/storage.config';
+import { dbConnect } from './src/storage/storage.config';
 
 const PORT = process.env.PORT || 3000;
 
