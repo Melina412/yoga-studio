@@ -1,4 +1,6 @@
+import { useAuthStore } from '../store/store';
 const Home = () => {
+  const setLogin = useAuthStore((state) => state.setLogin);
   return (
     <>
       <main>
@@ -11,6 +13,11 @@ const Home = () => {
             </h1>
           </div>
         </section>
+        <div className='flex justify-center'>
+          <button onClick={() => setLogin(false)} className='btn btn-neutral'>
+            Logout
+          </button>
+        </div>
       </main>
     </>
   );

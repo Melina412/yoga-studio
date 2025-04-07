@@ -1,17 +1,20 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
 import Login from './routes/Login';
 import Home from './routes/Home';
+import debugStore from './store/debug';
 
 function App() {
-  const [login, setLogin] = useState(false);
-  console.log({ login });
   return (
     <>
       <BrowserRouter>
+        <div className='flex justify-center'>
+          <button onClick={() => debugStore()} className='btn btn-sm btn-warning'>
+            Debug
+          </button>
+        </div>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login setLogin={setLogin} />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
     </>

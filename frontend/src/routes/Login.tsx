@@ -1,20 +1,23 @@
-import type { LoginProps, ResponseType } from '../frontend.types';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore, useResponseStore } from '../store/store';
 
-const Login = ({ setLogin }: LoginProps) => {
+const Login = () => {
+  // Zustand States
+  const setLogin = useAuthStore((state) => state.setLogin);
+  const setLoginResponse = useResponseStore((state) => state.setLoginResponse);
+
+  // React Hooks
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-
   const navigate = useNavigate();
-  const [loginResponse, setLoginResponse] = useState<ResponseType>(null);
 
   async function userLogin() {
     const user = {
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
     };
-    console.log({ user });
+    // console.log({ user });
 
     try {
       const res = await fetch(`${import.meta.env.VITE_BACKENDURL}/api/auth/login`, {
@@ -27,28 +30,33 @@ const Login = ({ setLogin }: LoginProps) => {
       });
 
       if (res.ok) {
-        if (emailRef.current?.value !== undefined && passwordRef.current?.value !== undefined) {
-          emailRef.current.value = '';
-          passwordRef.current.value = '';
-        }
+        // if (emailRef.current?.value !== undefined && passwordRef.current?.value !== undefined) {
+        //   emailRef.current.value = '';
+        //   passwordRef.current.value = '';
+        // }
+        clearInput();
+
+        const response = await res.json();
+        setLoginResponse(response);
+
         setLogin(true);
         navigate('/');
       }
-
-      const response = await res.json();
-      setLoginResponse(response);
     } catch (error) {
       console.error(error);
     }
   }
 
-  console.log({ loginResponse });
+  function clearInput() {
+    if (emailRef.current) emailRef.current.value = '';
+    if (passwordRef.current) passwordRef.current.value = '';
+  }
 
   return (
     <>
       <div>
         <input type='text' ref={emailRef} placeholder='email' />
-        <input type='text' ref={passwordRef} placeholder='password' />
+        <input type='password' ref={passwordRef} placeholder='password' />
         <button onClick={userLogin}>Login</button>
       </div>
     </>
