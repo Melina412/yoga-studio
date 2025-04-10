@@ -1,3 +1,4 @@
+import Logout from '../components/Logout';
 const Home = () => {
   return (
     <>
@@ -11,6 +12,9 @@ const Home = () => {
             </h1>
           </div>
         </section>
+        <div className='flex justify-center'>
+          <Logout />
+        </div>
       </main>
     </>
   );

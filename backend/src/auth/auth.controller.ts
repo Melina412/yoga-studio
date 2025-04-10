@@ -72,3 +72,12 @@ export async function login(req: Request, res: Response): Promise<void> {
     res.status(500).end();
   }
 }
+
+export function logout(req: Request, res: Response): void {
+  try {
+    res.clearCookie('accessCookie').clearCookie('refreshCookie').json({ success: true, message: 'logout successful' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
+}

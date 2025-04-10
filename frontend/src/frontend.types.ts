@@ -1,7 +1,13 @@
-import { Dispatch, SetStateAction } from 'react';
+export type ResponseType = { success: boolean; message: string; data?: any } | null;
 
-export interface LoginProps {
-  setLogin: Dispatch<SetStateAction<boolean>>;
+// Zustand
+
+export interface AuthStore {
+  login: boolean;
+  setLogin: (value: boolean) => void;
 }
 
-export type ResponseType = { success: boolean; message: string; data?: any } | null;
+export interface ResponseStore {
+  loginResponse: ResponseType;
+  setLoginResponse: (res: ResponseType) => void;
+}
