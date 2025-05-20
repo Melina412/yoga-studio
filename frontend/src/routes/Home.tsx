@@ -1,7 +1,9 @@
-import Logout from '../components/Logout';
+import NavBar from '../components/NavBar';
+
 const Home = () => {
   return (
     <>
+      <NavBar />
       <main>
         <section>
           <div>
@@ -11,10 +13,13 @@ const Home = () => {
               Landingpage Yoga Studio
             </h1>
           </div>
+          <div className='flex justify-center flex-col items-center m-8'>
+            <h2>ein Bild</h2>
+            <div className=''>
+              <img src='https://picsum.photos/id/237/600/400' alt='test image' />
+            </div>
+          </div>
         </section>
-        <div className='flex justify-center'>
-          <Logout />
-        </div>
       </main>
     </>
   );

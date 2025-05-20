@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore, useResponseStore } from '../store/store';
+import { useAuthStore, useResponseStore } from '../../store/store';
 
 const Login = () => {
   // Zustand States
