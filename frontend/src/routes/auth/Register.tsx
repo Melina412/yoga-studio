@@ -1,26 +1,23 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore, useResponseStore } from '../store/store';
 
-const Login = () => {
-  // Zustand States
-  const setLogin = useAuthStore((state) => state.setLogin);
-  const setLoginResponse = useResponseStore((state) => state.setLoginResponse);
-
+const Register = () => {
   // React Hooks
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const displayNameRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
-  async function userLogin() {
+  async function userRegister() {
     const user = {
       email: emailRef.current?.value,
       password: passwordRef.current?.value,
+      displayName: displayNameRef.current?.value,
     };
     // console.log({ user });
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACKENDURL}/api/auth/login`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKENDURL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,17 +27,10 @@ const Login = () => {
       });
 
       if (res.ok) {
-        // if (emailRef.current?.value !== undefined && passwordRef.current?.value !== undefined) {
-        //   emailRef.current.value = '';
-        //   passwordRef.current.value = '';
-        // }
-        clearInput();
-
         const response = await res.json();
-        setLoginResponse(response);
-
-        setLogin(true);
-        navigate('/');
+        console.log(response);
+        clearInput();
+        navigate('/login');
       }
     } catch (error) {
       console.error(error);
@@ -50,6 +40,7 @@ const Login = () => {
   function clearInput() {
     if (emailRef.current) emailRef.current.value = '';
     if (passwordRef.current) passwordRef.current.value = '';
+    if (displayNameRef.current) displayNameRef.current.value = '';
   }
 
   return (
@@ -57,10 +48,12 @@ const Login = () => {
       <div>
         <input type='text' ref={emailRef} placeholder='email' />
         <input type='password' ref={passwordRef} placeholder='password' />
-        <button onClick={userLogin}>Login</button>
+        <input type='text' ref={displayNameRef} placeholder='username' />
+
+        <button onClick={userRegister}>Register</button>
       </div>
     </>
   );
 };
 
-export default Login;
+export default Register;

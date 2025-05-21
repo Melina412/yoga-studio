@@ -1,0 +1,113 @@
+# YOGA STUDIO
+
+Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei angestellte Yogalehrer:innen und bietet sowohl Gruppenkurse als auch Einzeltrainings an. Da sie viel Zeit mit der Organisation verbringt, sucht sie eine digitale Lösung, die ihr Studio effizient verwaltet.
+
+## Stack
+
+<div>
+ <img src="https://img.shields.io/badge/React-61DAFB.svg?style=for-the-badge&logo=React&logoColor=black" />
+ <img src="https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+ <img src="https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white" />
+ <img src="https://img.shields.io/badge/MongoDB-2B664C.svg?style=for-the-badge&logo=MongoDB&logoColor=white" />
+ <img src="https://img.shields.io/badge/Mongoose-880000.svg?style=for-the-badge&logo=Mongoose&logoColor=white" />
+ <img src="https://img.shields.io/badge/Tailwind%20CSS-06B6D4.svg?style=for-the-badge&logo=Tailwind-CSS&logoColor=white" />
+ <img src="https://img.shields.io/badge/DaisyUI-1AD1A5.svg?style=for-the-badge&logo=DaisyUI&logoColor=white" />
+ <img src="https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white" />
+</div>
+
+## Anforderungen an die App
+
+<!-- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" />
+<img align="center" src="https://img.shields.io/badge/Als%20Mitarbeiter:in-008B8B" />
+<img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" />
+<img align="center" src="https://img.shields.io/badge/Als%20Entwicklerin-663399" /> -->
+
+### Kursverwaltung
+
+- <img align="center"  src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich einen flexiblen Kursplan erstellen können, damit meine Kund:innen Gruppenkurse und Einzeltrainings einfach buchen können.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich einen Kurs direkt online buchen und meine bisherigen Buchungen einsehen können.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich eine Benachrichtigung erhalten, wenn sich mein Kursplan ändert oder ein Kurs ausfällt.
+
+### Kund:innen- & Mitgliedschaftsverwaltung
+
+- <img align="center"  src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich eine Liste meiner Kund:innen mit ihren Buchungen und Mitgliedschaften einsehen können, um einen besseren Überblick zu haben.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich sehen können, wie viele Einheiten auf meiner 10er-Karte noch verfügbar sind.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich meine persönlichen Daten und meine Mitgliedschaftsoptionen selbst verwalten können.
+
+### Bezahl- & Abrechnungssystem
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich meinen Kurs direkt online bezahlen können, damit ich nicht mit Bargeld ins Studio kommen muss.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich automatisch Rechnungen generieren lassen, um den administrativen Aufwand zu reduzieren.
+
+### Mitarbeiterverwaltung
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich meinen Mitarbeiter:innen ihre Arbeitszeiten und Kurse zuweisen können.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Mitarbeiter:in-008B8B" /> möchte ich meinen Dienstplan online einsehen können.
+
+### Marketing & Kundenbindung
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich Rabattcodes erstellen können, um mehr Neukund:innen zu gewinnen.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich mich für einen Newsletter anmelden können, um über neue Kurse informiert zu werden.
+
+### Bewertungen & Feedback
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich eine Bewertung für meinen Kurs hinterlassen, um anderen zu helfen, die richtige Entscheidung zu treffen.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich Feedback zu meinen Kursen sammeln, um mein Angebot zu verbessern.
+
+### Website & Funktionalität
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich dass meine Website ein schlichtes Design hat, das für ein Yoga Studio angemessen ist.
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Entwicklerin-663399" /> möchte ich die Inhalte im Browser und auf verschiedenen mobilen Geräten ansprechend anzeigen können.
+
+### DSGVO & Datenschutz
+
+- <img align="center" src="https://img.shields.io/badge/Als%20Entwicklerin-663399" /> möchte ich einen sicheren und DSGVO-konformen Umgang mit persönlichen Daten gewährleisten.
+
+## Status / Nächte Schritte
+
+### Frontend
+
+[✅] login
+<br/> [✅] register
+<br/> [✅] logout
+<br/> [✅] routing
+<br/> [✅] zustand
+<br/> [✅] debug states
+<br/> [✅] react error boundary
+<br/> [✅] window error handling
+<br/> [✅] admin dashboard - protected route
+<br/> [✅] check access token
+<br/> [✅] refresh token
+<br/> [❌] navbar landingpage etc.
+<br/> [❌] navbar dashboard
+<br/> [❌] customer dashboard - protected route
+<br/> [❌] staff dashboard - protected route
+<br/> [❌] timetable ui
+<br/> [❌] create yoga courses
+<br/> [❌] course booking
+<br/> [❌] course payments
+<br/> [❌] frontend tests
+
+### Backend
+
+[✅] nodemon & typescript compiler config
+<br/> [✅] mongoDB storage config
+<br/> [✅] JWT auth services
+<br/> [✅] api/auth/login
+<br/> [✅] api/auth/register
+<br/> [✅] api/auth/logout
+<br/> [✅] check access token middleware
+<br/> [✅] refresh token middleware
+<br/> [✅] api/auth/check (access token)
+<br/> [✅] user schema
+<br/> [❌] api/auth/refresh (refresh token)
+<br/> [❌] auth tests
