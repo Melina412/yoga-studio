@@ -4,7 +4,7 @@ import { createHash, createSalt, createToken } from './auth.service';
 
 export async function register(req: Request, res: Response): Promise<void> {
   // console.log('req.body ', req.body);
-  const { email, password, role } = req.body;
+  const { email, password, role, displayName } = req.body;
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -19,7 +19,8 @@ export async function register(req: Request, res: Response): Promise<void> {
       email,
       password: hashedPassword,
       salt: salt,
-      role: role || 'Customer',
+      role: role || 'customer',
+      displayName,
     });
 
     await user.save();
