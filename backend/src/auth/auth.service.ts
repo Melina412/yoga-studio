@@ -15,3 +15,12 @@ export function createHash(password: string, salt: string) {
 export function createSalt() {
   return randomBytes(12).toString('hex');
 }
+
+export function verifyToken(token: string) {
+  try {
+    return jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
+    // console.log('verifyToken failed:', error.message);
+    throw error;
+  }
+}

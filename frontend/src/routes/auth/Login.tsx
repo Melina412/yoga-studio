@@ -1,10 +1,10 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore, useResponseStore } from '../../store/store';
+import { useLoginStore, useResponseStore } from '../../store/store';
 
 const Login = () => {
   // Zustand States
-  const setLogin = useAuthStore((state) => state.setLogin);
+  const setLogin = useLoginStore((state) => state.setLogin);
   const setLoginResponse = useResponseStore((state) => state.setLoginResponse);
 
   // React Hooks

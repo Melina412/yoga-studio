@@ -1,9 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import Logout from './Logout';
-import { useAuthStore } from '../store/store';
+import { useLoginStore } from '../store/store';
 
 const NavBar = () => {
-  const login = useAuthStore((state) => state.login);
+  const login = useLoginStore((state) => state.login);
   return (
     <>
       {/* <nav>
@@ -38,7 +38,9 @@ const NavBar = () => {
                 </svg>
               </label>
             </div>
-            <div className='mx-2 flex-1 px-2'>Yoga Studio</div>
+            <div className='mx-2 flex-1 px-2'>
+              <NavLink to='/'>Yoga Studio</NavLink>
+            </div>
             <div className='hidden flex-none lg:block'>
               <ul className='menu menu-horizontal'>
                 {/* Navbar menu content here */}
@@ -57,6 +59,11 @@ const NavBar = () => {
 
                 <li>
                   <div className='flex justify-center'>{login ? <Logout /> : <NavLink to='/login'>Login</NavLink>}</div>
+                </li>
+                <li>
+                  <div className='flex justify-center'>
+                    <NavLink to='/admin'>Admin</NavLink>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -77,12 +84,18 @@ const NavBar = () => {
 
             <li>
               <div className='flex justify-center'>
-                <NavLink to='/register'>Register</NavLink>
+                {login ? <NavLink to='/dashboard'>Dashboard</NavLink> : <NavLink to='/register'>Register</NavLink>}
               </div>
             </li>
 
             <li>
               <div className='flex justify-center'>{login ? <Logout /> : <NavLink to='/login'>Login</NavLink>}</div>
+            </li>
+
+            <li>
+              <div className='flex justify-center'>
+                <NavLink to='/admin'>Admin</NavLink>
+              </div>
             </li>
           </ul>
         </div>

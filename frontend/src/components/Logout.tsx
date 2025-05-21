@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from '../store/store';
+import { useLoginStore } from '../store/store';
 
 function Logout() {
   // Zustand States
-  const setLogin = useAuthStore((state) => state.setLogin);
+  const setLogin = useLoginStore((state) => state.setLogin);
 
   // React Hooks
   const navigate = useNavigate();

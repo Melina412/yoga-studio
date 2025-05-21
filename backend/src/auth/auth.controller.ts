@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { User } from '../users/user.model';
 import { createHash, createSalt, createToken } from './auth.service';
+import '../types';
 
 export async function register(req: Request, res: Response): Promise<void> {
   // console.log('req.body ', req.body);
@@ -47,7 +48,7 @@ export async function login(req: Request, res: Response): Promise<void> {
       return;
     }
 
-    const payload = { user: user._id, email: user.email };
+    const payload = { user: user._id, email: user.email, role: user.role };
     const accessToken = createToken(payload, '1h');
     const refreshToken = createToken(payload, '24h');
 
@@ -81,4 +82,14 @@ export function logout(req: Request, res: Response): void {
     console.error(error);
     res.status(500).end();
   }
+}
+
+export function check(req: Request, res: Response): void {
+  const payload = req.payload;
+  res.json({ success: true, message: 'check successful', data: { payload: payload } });
+  res.end();
+}
+
+export async function refresh(req: Request, res: Response): Promise<void> {
+  res.end();
 }
