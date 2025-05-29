@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -77,7 +77,10 @@ const Calendar = () => {
     },
   ];
 
-  setEvents(eventData);
+  useEffect(() => {
+    // state darf nicht direkt in der komponente gesetzt werden
+    setEvents(eventData);
+  }, []);
   const events = useEventStore((state) => state.events);
 
   return (
@@ -85,7 +88,7 @@ const Calendar = () => {
       <section className='calendar m-10'>
         <h1>Calendar</h1>
         <div className='fc-custom'>
-          <h2 className='text-2xl bg-red-500'>ÜBERSCHRIFT</h2>
+          {/* <h2 className='text-2xl bg-red-500'>ÜBERSCHRIFT</h2> */}
           <FullCalendar
             plugins={[dayGridPlugin, timeGridPlugin]}
             locale={deLocale}
