@@ -1,11 +1,19 @@
+import { useRef } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import deLocale from '@fullcalendar/core/locales/de';
+import EventModal from './EventModal';
 
 import '../style/calendar.css';
 
 const Calendar = () => {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const handleEventClick = (info: any) => {
+    info.jsEvent.preventDefault(); // verhindert default click behavior ( link öffnen??)
+    dialogRef.current?.showModal();
+  };
   return (
     <>
       <section className='calendar m-10'>
@@ -45,6 +53,7 @@ const Calendar = () => {
                 className: 'meditation',
               },
             ]}
+            eventClick={handleEventClick}
             headerToolbar={{
               left: 'prev,next today',
               center: 'title',
@@ -68,6 +77,7 @@ const Calendar = () => {
             // }}
           />
         </div>
+        <EventModal ref={dialogRef} />
       </section>
     </>
   );

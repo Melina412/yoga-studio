@@ -72,7 +72,7 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Entwicklerin-663399" /> möchte ich einen sicheren und DSGVO-konformen Umgang mit persönlichen Daten gewährleisten.
 
-## Status / Nächte Schritte
+## Status / Nächste Schritte
 
 ### Frontend
 
