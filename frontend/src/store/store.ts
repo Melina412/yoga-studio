@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { LoginStore, ResponseStore, AuthStore } from '../frontend.types';
+import type { LoginStore, ResponseStore, AuthStore, CalendarStore, EventStore } from '../frontend.types';
 
 export const useLoginStore = create<LoginStore>((set) => ({
   login: false,
@@ -16,4 +16,14 @@ export const useResponseStore = create<ResponseStore>((set) => ({
 export const useAuthStore = create<AuthStore>((set) => ({
   authorized: false,
   setAuthorized: (value) => set({ authorized: value }),
+}));
+
+export const useCalendarStore = create<CalendarStore>((set) => ({
+  selectedEventId: null,
+  setSelectedEventId: (id) => set({ selectedEventId: id }),
+}));
+
+export const useEventStore = create<EventStore>((set) => ({
+  events: [],
+  setEvents: (events) => set({ events }),
 }));

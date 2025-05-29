@@ -1,4 +1,4 @@
-import { useLoginStore, useResponseStore, useAuthStore } from './store';
+import { useLoginStore, useResponseStore, useAuthStore, useCalendarStore, useEventStore } from './store';
 
 const debugStore = () => {
   console.log('%c ******************** debugStore() ******************** ', 'background-color: #bada55; color: #222;');
@@ -11,6 +11,12 @@ const debugStore = () => {
     useResponseStore.getState().checkTokenResponse
   );
   console.log('%cauthorized:', 'background-color: #222; color: #bada55;', useAuthStore.getState().authorized);
+  console.log(
+    '%cselectedEventId:',
+    'background-color: #222; color: #bada55;',
+    useCalendarStore.getState().selectedEventId
+  );
+  console.log('%cevents:', 'background-color: #222; color: #bada55;', useEventStore.getState().events);
 
   console.log('%c ****************************************************** ', 'background-color: #bada55; color: #222;');
 };
