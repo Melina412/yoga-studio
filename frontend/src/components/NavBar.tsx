@@ -65,6 +65,11 @@ const NavBar = () => {
                     <NavLink to='/admin'>Admin</NavLink>
                   </div>
                 </li>
+                <li>
+                  <div className='flex justify-center'>
+                    <NavLink to='/timetable'>Timetable</NavLink>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>
@@ -95,6 +100,11 @@ const NavBar = () => {
             <li>
               <div className='flex justify-center'>
                 <NavLink to='/admin'>Admin</NavLink>
+              </div>
+            </li>
+            <li>
+              <div className='flex justify-center'>
+                <NavLink to='/timetable'>Timetable</NavLink>
               </div>
             </li>
           </ul>

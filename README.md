@@ -72,7 +72,7 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Entwicklerin-663399" /> möchte ich einen sicheren und DSGVO-konformen Umgang mit persönlichen Daten gewährleisten.
 
-## Status / Nächte Schritte
+## Status / Nächste Schritte
 
 ### Frontend
 
@@ -87,11 +87,11 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] admin dashboard - protected route
 <br/> [✅] check access token
 <br/> [✅] refresh token
+<br/> [✅] timetable ui
 <br/> [❌] navbar landingpage etc.
 <br/> [❌] navbar dashboard
 <br/> [❌] customer dashboard - protected route
 <br/> [❌] staff dashboard - protected route
-<br/> [❌] timetable ui
 <br/> [❌] create yoga courses
 <br/> [❌] course booking
 <br/> [❌] course payments
