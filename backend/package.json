@@ -6,7 +6,9 @@
     "dev": "nodemon",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "test:unit": "vitest run './tests/unit'",
+    "test:report": "vitest run --reporter verbose"
   },
   "keywords": [],
   "author": "",

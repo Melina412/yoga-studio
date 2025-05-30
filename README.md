@@ -109,5 +109,7 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] refresh token middleware
 <br/> [✅] api/auth/check (access token)
 <br/> [✅] user schema
+<br/> [✅] auth unit tests
 <br/> [❌] api/auth/refresh (refresh token)
-<br/> [❌] auth tests
+<br/> [❌] auth integration tests (api routes & db operations)
+<br/> [❌] github workflow for tests on pull request
