@@ -47,6 +47,12 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.Mixed,
     default: {},
   },
+  userEvents: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'event',
+    },
+  ],
 });
 
 export const User = mongoose.model('user', userSchema);

@@ -20,4 +20,17 @@ export interface ResponsePayload {
   iat?: number;
 }
 
+export interface EventType {
+  title: string;
+  date: string;
+  start?: string;
+  end?: string;
+  location?: string;
+  trainer?: string;
+  info?: string;
+  classId?: string;
+  className: string;
+  status: string;
+}
+
 export {};
