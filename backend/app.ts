@@ -6,6 +6,8 @@ import morgan from 'morgan';
 import path from 'path';
 
 import { router as authRouter } from './src/auth/auth.router';
+import { router as eventRouter } from './src/events/event.router';
+import { router as userRouter } from './src/users/user.router';
 
 const app = express();
 
@@ -18,5 +20,7 @@ app.use(morgan('dev'));
 // app.use(express.static(FRONTEND_DIR));
 
 app.use('/api/auth', authRouter);
+app.use('/api/events', eventRouter);
+app.use('/api/users', userRouter);
 
 export default app;

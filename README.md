@@ -113,6 +113,9 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] user schema
 <br/> [✅] auth unit tests
 <br/> [✅] auth integration tests (register & login)
+<br/> [✅] api/events – createEvent(), getEvents()
+<br/> [✅] api/users
+<br/> [✅] api/users/data
 <br/> [❌] auth integration tests (logout)
 <br/> [❌] api/auth/refresh (refresh token)
 <br/> [❌] GitHub workflow for tests on pull requests

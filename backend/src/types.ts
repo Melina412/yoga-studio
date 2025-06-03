@@ -11,13 +11,26 @@ declare global {
 
 export type TokenType = 'ACCESS_TOKEN' | 'REFRESH_TOKEN';
 
-export interface ResponsePayload {
-  // ?
+export interface TokenPayload {
+  //? -> im backend auf die userdaten aus der middleware zugreifen
   user: string;
   email: string;
   role: string;
   exp?: number;
   iat?: number;
+}
+
+export interface EventType {
+  title: string;
+  date: string;
+  start?: string;
+  end?: string;
+  location?: string;
+  trainer?: string;
+  info?: string;
+  classId?: string;
+  className: string;
+  status: string;
 }
 
 export {};
