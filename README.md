@@ -38,19 +38,19 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich meine persönlichen Daten und meine Mitgliedschaftsoptionen selbst verwalten können.
 
-### Bezahl- & Abrechnungssystem
+### Bezahl- und Abrechnungssystem
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Kund:in-FF69B4" /> möchte ich meinen Kurs direkt online bezahlen können, damit ich nicht mit Bargeld ins Studio kommen muss.
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich automatisch Rechnungen generieren lassen, um den administrativen Aufwand zu reduzieren.
 
-### Mitarbeiterverwaltung
+### Mitarbeiter:innenverwaltung
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich meinen Mitarbeiter:innen ihre Arbeitszeiten und Kurse zuweisen können.
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Mitarbeiter:in-008B8B" /> möchte ich meinen Dienstplan online einsehen können.
 
-### Marketing & Kundenbindung
+### Marketing & Kund:innenbindung
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich Rabattcodes erstellen können, um mehr Neukund:innen zu gewinnen.
 
@@ -64,7 +64,7 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 
 ### Website & Funktionalität
 
-- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich dass meine Website ein schlichtes Design hat, das für ein Yoga Studio angemessen ist.
+- <img align="center" src="https://img.shields.io/badge/Als%20Studiobesitzerin-1E90FF" /> möchte ich, dass meine Website ein schlichtes Design hat, das für ein Yoga-Studio angemessen ist.
 
 - <img align="center" src="https://img.shields.io/badge/Als%20Entwicklerin-663399" /> möchte ich die Inhalte im Browser und auf verschiedenen mobilen Geräten ansprechend anzeigen können.
 
@@ -84,23 +84,25 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] debug states
 <br/> [✅] react error boundary
 <br/> [✅] window error handling
-<br/> [✅] admin dashboard - protected route
+<br/> [✅] admin dashboard – protected route
 <br/> [✅] check access token
 <br/> [✅] refresh token
-<br/> [✅] timetable ui
-<br/> [❌] navbar landingpage etc.
-<br/> [❌] navbar dashboard
-<br/> [❌] customer dashboard - protected route
-<br/> [❌] staff dashboard - protected route
-<br/> [❌] create yoga courses
+<br/> [✅] timetable UI
+<br/> [❌] navbar for landingpage etc.
+<br/> [❌] navbar for dashboard
+<br/> [❌] customer dashboard – protected route
+<br/> [❌] staff dashboard – protected route
+<br/> [❌] public: view all yoga courses
+<br/> [❌] admin: create yoga courses
+<br/> [❌] customer: view my yoga courses
 <br/> [❌] course booking
 <br/> [❌] course payments
 <br/> [❌] frontend tests
 
 ### Backend
 
-[✅] nodemon & typescript compiler config
-<br/> [✅] mongoDB storage config
+[✅] Nodemon & TypeScript compiler config
+<br/> [✅] MongoDB storage config
 <br/> [✅] JWT auth services
 <br/> [✅] api/auth/login
 <br/> [✅] api/auth/register
@@ -109,5 +111,8 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] refresh token middleware
 <br/> [✅] api/auth/check (access token)
 <br/> [✅] user schema
+<br/> [✅] auth unit tests
+<br/> [✅] auth integration tests (register & login)
+<br/> [❌] auth integration tests (logout)
 <br/> [❌] api/auth/refresh (refresh token)
-<br/> [❌] auth tests
+<br/> [❌] GitHub workflow for tests on pull requests
