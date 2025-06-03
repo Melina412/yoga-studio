@@ -92,8 +92,9 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [❌] navbar for dashboard
 <br/> [❌] customer dashboard – protected route
 <br/> [❌] staff dashboard – protected route
-<br/> [❌] public: view all yoga courses
-<br/> [❌] admin: create yoga courses
+<br/> [✅] public: view all yoga courses
+<br/> [✅] admin: create single yoga courses
+<br/> [❌] admin: create yoga course series
 <br/> [❌] customer: view my yoga courses
 <br/> [❌] course booking
 <br/> [❌] course payments

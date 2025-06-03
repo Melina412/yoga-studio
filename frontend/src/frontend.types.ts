@@ -25,14 +25,17 @@ export interface CalendarStore {
 }
 
 export type EventType = {
-  id: string;
-  title: string;
-  date: string;
-  start: string;
-  end: string;
-  info?: string;
-  color?: string;
-  description?: string;
+  _id?: string | undefined;
+  title: string | undefined;
+  date: string | undefined;
+  start: string | undefined;
+  end: string | undefined;
+  location?: string | undefined;
+  trainer?: string | undefined;
+  info?: string | undefined;
+  classId?: string | undefined;
+  className?: string | undefined;
+  status?: string | undefined;
 };
 
 export interface EventStore {
