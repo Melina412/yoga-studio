@@ -7,7 +7,6 @@ const eventSchema = new mongoose.Schema({
   },
   date: {
     type: String,
-    required: true,
   },
   start: {
     type: String,
@@ -36,7 +35,29 @@ const eventSchema = new mongoose.Schema({
     enum: ['upcoming', 'ongoing', 'archived', 'cancelled'],
     default: 'upcoming',
   },
+  recurring: {
+    type: Boolean,
+  },
+  daysOfWeek: {
+    type: [String],
+  },
+  startTime: {
+    type: String,
+  },
+  endTime: {
+    type: String,
+  },
+  startRecur: {
+    type: String,
+  },
+  endRecur: {
+    type: String,
+  },
+  groupId: {
+    type: String,
+  },
 });
+//! hier noch irgendwie validieren, dass man bei recurring true/false jeweils start bzw. startTime usw. braucht
 
 export const Event = mongoose.model('Event', eventSchema);
 

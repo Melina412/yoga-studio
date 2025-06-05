@@ -96,6 +96,7 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] admin: create single yoga courses
 <br/> [❌] admin: create yoga course series
 <br/> [❌] customer: view my yoga courses
+<br/> [❌] customer: cancel booked courses
 <br/> [❌] course booking
 <br/> [❌] course payments
 <br/> [❌] frontend tests

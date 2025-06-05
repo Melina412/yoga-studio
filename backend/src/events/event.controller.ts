@@ -5,11 +5,47 @@ import { EventType } from '../types';
 
 //% POST /api/events
 export async function createEvent(req: Request, res: Response): Promise<void> {
-  const { title, date, start, end, location, trainer, info, classId, className, status } = req.body as EventType;
+  const {
+    title,
+    date,
+    start,
+    end,
+    location,
+    trainer,
+    info,
+    classId,
+    className,
+    status,
+    recurring,
+    daysOfWeek,
+    startTime,
+    endTime,
+    startRecur,
+    endRecur,
+    groupId,
+  } = req.body as EventType;
   console.log('req.body ', req.body);
 
   try {
-    const event = new Event({ title, date, start, end, location, trainer, info, classId, className, status });
+    const event = new Event({
+      title,
+      date,
+      start,
+      end,
+      location,
+      trainer,
+      info,
+      classId,
+      className,
+      status,
+      recurring,
+      daysOfWeek,
+      startTime,
+      endTime,
+      startRecur,
+      endRecur,
+      groupId,
+    });
     await event.save();
 
     res.status(201).json({ success: true, message: 'event created', data: { event: event } });

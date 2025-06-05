@@ -22,7 +22,7 @@ export interface TokenPayload {
 
 export interface EventType {
   title: string;
-  date: string;
+  date?: string;
   start?: string;
   end?: string;
   location?: string;
@@ -30,7 +30,14 @@ export interface EventType {
   info?: string;
   classId?: string;
   className: string;
-  status: string;
+  status: 'upcoming' | 'ongoing' | 'archived' | 'cancelled';
+  recurring: boolean;
+  daysOfWeek?: number[];
+  startTime?: string;
+  endTime?: string;
+  startRecur?: string;
+  endRecur?: string;
+  groupId?: string;
 }
 
 export {};
