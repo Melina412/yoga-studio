@@ -90,7 +90,7 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] timetable UI
 <br/> [❌] navbar for landingpage etc.
 <br/> [❌] navbar for dashboard
-<br/> [❌] customer dashboard – protected route
+<br/> [✅] customer dashboard – protected route
 <br/> [❌] staff dashboard – protected route
 <br/> [✅] public: view all yoga courses
 <br/> [✅] admin: create single yoga courses
@@ -118,6 +118,6 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] api/events – createEvent(), getEvents()
 <br/> [✅] api/users
 <br/> [✅] api/users/data
+<br/> [✅] api/auth/refresh (refresh token)
 <br/> [❌] auth integration tests (logout)
-<br/> [❌] api/auth/refresh (refresh token)
 <br/> [❌] GitHub workflow for tests on pull requests

@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { useAuthStore, useLoginStore, useResponseStore } from '../../store/store';
 
-const AdminProtector = () => {
+const Protector = ({ role }: { role: string }) => {
+  const protectorRole = role;
+
+  const location = useLocation();
   const setAuthorized = useAuthStore((state) => state.setAuthorized);
   const authorized = useAuthStore.getState().authorized;
 
@@ -10,12 +13,13 @@ const AdminProtector = () => {
   const login = useLoginStore.getState().login;
 
   const setCheckTokenResponse = useResponseStore((state) => state.setCheckTokenResponse);
-  const checkTokenResponse = useResponseStore.getState().checkTokenResponse;
-  console.log({ checkTokenResponse });
+  const setCheckRefreshTokenResponse = useResponseStore((state) => state.setCheckRefreshTokenResponse);
+  const setRequestedLocation = useLoginStore((state) => state.setRequestedLocation);
+
+  const requestedRole = useLoginStore((state) => state.requestedRole);
 
   const [loading, setLoading] = useState(true);
   console.log({ loading });
-  console.log({ authorized });
 
   //$ refreshToken() ---------------------------------------------------
 
@@ -26,6 +30,8 @@ const AdminProtector = () => {
       credentials: 'include',
     });
     if (response.ok) {
+      const res = await response.json();
+      setCheckRefreshTokenResponse(res);
       console.log('✅ token refreshed successfully!');
       setAuthorized(true);
     } else {
@@ -39,6 +45,7 @@ const AdminProtector = () => {
 
   useEffect(() => {
     async function checkToken() {
+      setRequestedLocation(location.pathname);
       try {
         const response = await fetch(`${import.meta.env.VITE_BACKENDURL}/api/auth/check`, {
           credentials: 'include',
@@ -65,8 +72,11 @@ const AdminProtector = () => {
           //! ####################################################################################################################################
           //! ist das sicher genug hier einfach die role zu prüfen oder muss ich für den admin einen anderen access token erstellen und prüfen????
           //! ####################################################################################################################################
-          if (res.data.payload.role !== 'admin') {
-            console.log('user is not admin, redirecting...');
+          console.log({ requestedRole });
+          console.log({ protectorRole });
+
+          if (res.data.payload.role !== protectorRole) {
+            console.log(`user is not ${protectorRole}, redirecting...`);
             setAuthorized(false);
           } else {
             console.log('access token is valid');
@@ -102,4 +112,4 @@ const AdminProtector = () => {
   return <Outlet />;
 };
 
-export default AdminProtector;
+export default Protector;

@@ -1,21 +1,31 @@
 import { create } from 'zustand';
-import type { LoginStore, ResponseStore, AuthStore, CalendarStore, EventStore } from '../frontend.types';
+import type { LoginStore, ResponseStore, AuthStore, CalendarStore, EventStore } from './types';
+import { getRoleFromLocation } from '../utils/utils';
 
 export const useLoginStore = create<LoginStore>((set) => ({
   login: false,
+  requestedLocation: null,
+  requestedRole: null,
   setLogin: (value) => set({ login: value }),
+  setRequestedLocation: (location) => {
+    set({ requestedLocation: location }), set({ requestedRole: getRoleFromLocation(location) });
+  },
 }));
 
 export const useResponseStore = create<ResponseStore>((set) => ({
   loginResponse: null,
   checkTokenResponse: null,
+  checkRefreshTokenResponse: null,
   setLoginResponse: (res) => set({ loginResponse: res }),
   setCheckTokenResponse: (res) => set({ checkTokenResponse: res }),
+  setCheckRefreshTokenResponse: (res) => set({ checkRefreshTokenResponse: res }),
 }));
 
 export const useAuthStore = create<AuthStore>((set) => ({
   authorized: false,
+  role: null,
   setAuthorized: (value) => set({ authorized: value }),
+  setRole: (value) => set({ role: value }),
 }));
 
 export const useCalendarStore = create<CalendarStore>((set) => ({

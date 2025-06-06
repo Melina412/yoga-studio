@@ -57,8 +57,11 @@ const NavBar = () => {
                   </div>
                 </li>
 
-                <li>
+                {/* <li>
                   <div className='flex justify-center'>{login ? <Logout /> : <NavLink to='/login'>Login</NavLink>}</div>
+                </li> */}
+                <li>
+                  <div className='flex justify-center'>{<Logout />}</div>
                 </li>
                 <li>
                   <div className='flex justify-center'>
@@ -88,15 +91,27 @@ const NavBar = () => {
             </li>
 
             <li>
-              <div className='flex justify-center'>
+              {/* <div className='flex justify-center'>
                 {login ? <NavLink to='/dashboard'>Dashboard</NavLink> : <NavLink to='/register'>Register</NavLink>}
+              </div> */}
+              <div className='flex justify-center'>{<NavLink to='/dashboard'>Dashboard</NavLink>}</div>
+            </li>
+            <li>
+              <div className='flex justify-center'>
+                <NavLink to='/staff'>Staff</NavLink>
               </div>
             </li>
 
-            <li>
+            {/* <li>
               <div className='flex justify-center'>{login ? <Logout /> : <NavLink to='/login'>Login</NavLink>}</div>
-            </li>
+            </li> */}
 
+            <li>
+              <div className='flex justify-center'>{<NavLink to='/login'>Login</NavLink>}</div>
+            </li>
+            <li>
+              <div className='flex justify-center'>{<Logout />}</div>
+            </li>
             <li>
               <div className='flex justify-center'>
                 <NavLink to='/admin'>Admin</NavLink>
