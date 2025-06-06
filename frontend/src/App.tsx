@@ -14,11 +14,9 @@ import Contact from './routes/Contact';
 import Timetable from './routes/Timetable';
 import NotFound from './routes/NotFound';
 import Admin from './routes/auth/Admin';
-import AdminProtector from './routes/auth/AdminProtector';
+import Protector from './routes/auth/Protector';
 import Staff from './routes/auth/Staff';
-import StaffProtector from './routes/auth/StaffProtector';
 import CustomerDashboard from './routes/auth/CustomerDashboard';
-import CustomerProtector from './routes/auth/CustomerProtector';
 
 function App() {
   return (
@@ -41,13 +39,13 @@ function App() {
             <Route path='/contact' element={<Contact />} />
             <Route path='/*' element={<NotFound />} />
 
-            <Route element={<AdminProtector />}>
+            <Route element={<Protector role='admin' />}>
               <Route path='/admin' element={<Admin />} />
             </Route>
-            <Route element={<StaffProtector />}>
+            <Route element={<Protector role='staff' />}>
               <Route path='/staff' element={<Staff />} />
             </Route>
-            <Route element={<CustomerProtector />}>
+            <Route element={<Protector role='customer' />}>
               <Route path='/dashboard' element={<CustomerDashboard />} />
             </Route>
           </Routes>

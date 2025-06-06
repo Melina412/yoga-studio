@@ -1,11 +1,15 @@
 import { create } from 'zustand';
 import type { LoginStore, ResponseStore, AuthStore, CalendarStore, EventStore } from './types';
+import { getRoleFromLocation } from '../utils/utils';
 
 export const useLoginStore = create<LoginStore>((set) => ({
   login: false,
-  desiredRole: null,
+  requestedLocation: null,
+  requestedRole: null,
   setLogin: (value) => set({ login: value }),
-  setDesiredRole: (value) => set({ desiredRole: value }),
+  setRequestedLocation: (location) => {
+    set({ requestedLocation: location }), set({ requestedRole: getRoleFromLocation(location) });
+  },
 }));
 
 export const useResponseStore = create<ResponseStore>((set) => ({

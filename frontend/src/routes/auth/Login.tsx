@@ -6,7 +6,7 @@ const Login = () => {
   // Zustand States
   const setLogin = useLoginStore((state) => state.setLogin);
   const setLoginResponse = useResponseStore((state) => state.setLoginResponse);
-  const desiredRole = useLoginStore((state) => state.desiredRole);
+  const requestedLocation = useLoginStore((state) => state.requestedLocation);
 
   // React Hooks
   const emailRef = useRef<HTMLInputElement>(null);
@@ -37,8 +37,12 @@ const Login = () => {
         setLoginResponse(response);
         setLogin(true);
 
-        if (response.data.role === desiredRole) {
+        if (response.data.role === 'admin' && requestedLocation === '/admin') {
           navigate('/admin');
+        } else if (response.data.role === 'customer' && requestedLocation === '/dashboard') {
+          navigate('/dashboard');
+        } else if (response.data.role === 'staff' && requestedLocation === '/staff') {
+          navigate('/staff');
         } else {
           navigate('/');
         }

@@ -4,9 +4,10 @@ import type { EventType, ResponseType } from '../frontend.types';
 
 export interface LoginStore {
   login: boolean;
-  desiredRole: 'admin' | 'staff' | 'customer' | null;
+  requestedLocation: string | null;
+  requestedRole: string | null;
   setLogin: (value: boolean) => void;
-  setDesiredRole: (value: 'admin' | 'staff' | 'customer' | null) => void;
+  setRequestedLocation: (value: string | null) => void;
 }
 
 export interface ResponseStore {
