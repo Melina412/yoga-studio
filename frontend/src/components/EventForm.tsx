@@ -1,15 +1,16 @@
 import { useRef, useState } from 'react';
 import type { EventType } from '../frontend.types';
 import { v4 as uuidv4 } from 'uuid';
+import { DateTime } from 'luxon';
 
 const EventForm = () => {
-  const [newEvent, setNewEvent] = useState<EventType | null>(null);
+  const [newEvent, setNewEvent] = useState<EventType[]>([]);
   const [recur, setRecur] = useState<boolean>(false);
   const [selectedDays, setSelectedDays] = useState<number[]>([]);
-  // const daysRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   // console.log({ selectedDays });
-  console.log({ newEvent });
+  // console.log({ newEvent });
+  // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   const titleRef = useRef<HTMLInputElement>(null);
   const dateRef = useRef<HTMLInputElement>(null);
@@ -27,10 +28,11 @@ const EventForm = () => {
   const statusRef = useRef<HTMLSelectElement>(null);
   const recurRef = useRef<HTMLInputElement>(null);
 
-  // console.log({ startTimeRef, endTimeRef, startRecurRef, endRecurRef });
-  console.log({ recur });
+  // console.log({ recur });
 
-  async function addEvent(event: EventType) {
+  async function addEvent(event: EventType[]) {
+    console.log('events in addEvent route:', event);
+
     try {
       const res = await fetch(`${import.meta.env.VITE_BACKENDURL}/api/events`, {
         method: 'POST',
@@ -51,45 +53,121 @@ const EventForm = () => {
   }
 
   const handleClick = () => {
-    // const selectedDays = daysRefs.current
-    //   .map((ref, index) => (ref?.checked ? index : null))
-    //   .filter((n): n is number => n !== null);
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ allgemeine event eigenschaften
+    const title = titleRef.current?.value;
+    const recurring = recurRef.current?.checked;
+    const location = locationRef.current?.value;
+    const trainer = trainerRef.current?.value;
+    const info = infoRef.current?.value;
+    const classId = classIdRef.current?.value;
+    const className = classNameRef.current?.value;
+    const status = statusRef.current?.value;
 
-    const newEvent: EventType = {
-      title: titleRef.current?.value,
-      recurring: recurRef.current?.checked,
-      location: locationRef.current?.value,
-      trainer: trainerRef.current?.value,
-      info: infoRef.current?.value,
-      classId: classIdRef.current?.value,
-      className: classNameRef.current?.value,
-      status: statusRef.current?.value,
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ einzelevent eigenschaften
 
-      // einzelne events:
-      date: !recur && dateRef.current?.value ? new Date(dateRef.current?.value).toISOString() : undefined,
-      start:
-        !recur && startRef.current?.value
-          ? new Date(dateRef.current?.value + ' ' + startRef.current?.value).toISOString()
-          : undefined,
-      end:
-        !recur && endRef.current?.value
-          ? new Date(dateRef.current?.value + ' ' + endRef.current?.value).toISOString()
-          : undefined,
+    const date = dateRef.current?.value ? new Date(dateRef.current?.value).toISOString() : undefined; //? benötigt?
+    const start = startRef.current?.value
+      ? new Date(dateRef.current?.value + ' ' + startRef.current?.value).toISOString()
+      : undefined;
+    const end = endRef.current?.value
+      ? new Date(dateRef.current?.value + ' ' + endRef.current?.value).toISOString()
+      : undefined;
 
-      // recurring events:
-      // daysOfWeek: recur ? selectedDays : [],
-      daysOfWeek: recur ? selectedDays : [],
-      startTime: recur && startTimeRef.current?.value ? startTimeRef.current?.value : undefined,
-      endTime: recur && endTimeRef.current?.value ? endTimeRef.current?.value : undefined,
-      startRecur:
-        recur && startRecurRef.current?.value ? new Date(startRecurRef.current?.value).toISOString() : undefined,
-      endRecur: recur && endRecurRef.current?.value ? new Date(endRecurRef.current?.value).toISOString() : undefined,
-      groupId: recur ? uuidv4() : undefined,
-    };
-    // events werden in der db erst mal in utc time gespeichert!
-    console.log({ newEvent });
-    setNewEvent(newEvent);
-    addEvent(newEvent);
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ recurring event luxon logik
+
+    const daysOfWeek = recur ? selectedDays : [];
+    const startRecur = startRecurRef.current?.value ? new Date(startRecurRef.current?.value).toISOString() : '';
+    const endRecur = endRecurRef.current?.value ? new Date(endRecurRef.current?.value).toISOString() : '';
+    const startTime = startTimeRef.current?.value ? startTimeRef.current?.value : '';
+    const endTime = endTimeRef.current?.value ? endTimeRef.current?.value : '';
+    const groupId = recur ? uuidv4() : undefined;
+
+    const startDate = DateTime.fromISO(startRecur);
+    const endDate = DateTime.fromISO(endRecur);
+
+    const events: { start: string; end: string; date: string }[] = [];
+
+    for (let date = startDate; date <= endDate; date = date.plus({ days: 1 })) {
+      const weekday = (date.weekday + 6) % 7; // luxon .weekday → 1 (Mo) bis 7 (So)
+
+      if (selectedDays.includes(weekday)) {
+        const startDateTime = date.set({
+          hour: Number(startTime.split(':')[0]),
+          minute: Number(startTime.split(':')[1]),
+        });
+
+        const endDateTime = date.set({
+          hour: Number(endTime.split(':')[0]),
+          minute: Number(endTime.split(':')[1]),
+        });
+
+        const isoDate = date.toISODate();
+        const isoStart = startDateTime.toISO();
+        const isoEnd = endDateTime.toISO();
+        if (!isoDate) throw new Error('isoDate is not defined');
+        if (!isoStart) throw new Error('isoStart is not defined');
+        if (!isoEnd) throw new Error('isoEnd is not defined');
+        // FullCalendar nimmt nicht null als type irgendeiner eigenschaft, deswegen hier ausschließen!
+        events.push({
+          date: isoDate,
+          start: isoStart,
+          end: isoEnd,
+        });
+      }
+    }
+
+    let finalEvents: EventType[] = [];
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    const event: EventType[] = recur
+      ? //% RECURRING EVENT
+        events.map((event) => ({
+          title: title,
+          recurring: recurring,
+          location: location,
+          trainer: trainer,
+          info: info,
+          classId: classId,
+          className: className,
+          status: status,
+
+          // recurring events:
+          date: event.date,
+          start: event.start,
+          end: event.end,
+
+          groupId: groupId,
+          groupInfo: {
+            daysOfWeek: daysOfWeek,
+            startTime: startTime,
+            endTime: endTime,
+            startRecur: startRecur,
+            endRecur: endRecur,
+          },
+        }))
+      : [
+          {
+            title: title,
+            recurring: recurring,
+            location: location,
+            trainer: trainer,
+            info: info,
+            classId: classId,
+            className: className,
+            status: status,
+            // einzelne events:
+            date: date,
+            start: start,
+            end: end,
+          },
+        ];
+    setNewEvent(event);
+    console.log({ event });
+    console.log({ newEvent }); // der state will sich einfach aktualisieren hier -.-
+
+    finalEvents.push(...event);
+    console.log({ finalEvents });
+    addEvent(finalEvents);
   };
 
   const handleCheckboxChange = (day: number) => {

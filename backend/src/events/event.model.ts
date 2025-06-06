@@ -38,23 +38,25 @@ const eventSchema = new mongoose.Schema({
   recurring: {
     type: Boolean,
   },
-  daysOfWeek: {
-    type: [String],
-  },
-  startTime: {
-    type: String,
-  },
-  endTime: {
-    type: String,
-  },
-  startRecur: {
-    type: String,
-  },
-  endRecur: {
-    type: String,
-  },
   groupId: {
     type: String,
+  },
+  groupInfo: {
+    daysOfWeek: {
+      type: [Number],
+    },
+    startTime: {
+      type: String,
+    },
+    endTime: {
+      type: String,
+    },
+    startRecur: {
+      type: String,
+    },
+    endRecur: {
+      type: String,
+    },
   },
 });
 //! hier noch irgendwie validieren, dass man bei recurring true/false jeweils start bzw. startTime usw. braucht
