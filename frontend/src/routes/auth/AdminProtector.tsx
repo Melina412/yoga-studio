@@ -10,12 +10,11 @@ const AdminProtector = () => {
   const login = useLoginStore.getState().login;
 
   const setCheckTokenResponse = useResponseStore((state) => state.setCheckTokenResponse);
-  const checkTokenResponse = useResponseStore.getState().checkTokenResponse;
-  console.log({ checkTokenResponse });
+  const setCheckRefreshTokenResponse = useResponseStore((state) => state.setCheckRefreshTokenResponse);
+  const setDesiredRole = useLoginStore((state) => state.setDesiredRole);
 
   const [loading, setLoading] = useState(true);
   console.log({ loading });
-  console.log({ authorized });
 
   //$ refreshToken() ---------------------------------------------------
 
@@ -26,6 +25,8 @@ const AdminProtector = () => {
       credentials: 'include',
     });
     if (response.ok) {
+      const res = await response.json();
+      setCheckRefreshTokenResponse(res);
       console.log('✅ token refreshed successfully!');
       setAuthorized(true);
     } else {
@@ -39,6 +40,7 @@ const AdminProtector = () => {
 
   useEffect(() => {
     async function checkToken() {
+      setDesiredRole('admin');
       try {
         const response = await fetch(`${import.meta.env.VITE_BACKENDURL}/api/auth/check`, {
           credentials: 'include',

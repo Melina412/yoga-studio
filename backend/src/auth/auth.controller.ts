@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../users/user.model';
 import { createHash, createSalt, createToken } from './auth.service';
 import '../types';
+import type { TokenPayload } from '../types';
 
 //% POST /api/auth/register ---------------------------------------------------
 export async function register(req: Request, res: Response): Promise<void> {
@@ -69,7 +70,7 @@ export async function login(req: Request, res: Response): Promise<void> {
       .json({
         success: true,
         message: 'login successful',
-        data: { email: user.email },
+        data: { role: user.role },
       });
   } catch (error) {
     console.error(error);
@@ -96,5 +97,32 @@ export function check(req: Request, res: Response): void {
 
 //% GET /api/auth/refresh -----------------------------------------------------
 export async function refresh(req: Request, res: Response): Promise<void> {
-  res.end();
+  const { email } = req.payload as TokenPayload;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      res.status(401).json({ success: false, message: 'user not found' });
+      return;
+    }
+
+    const payload = { user: user._id, email: user.email, role: user.role };
+    const accessToken = createToken(payload, '1h');
+
+    //# cookies -----------------------------------------------------------
+    res
+      .cookie('accessCookie', accessToken, {
+        httpOnly: true,
+        secure: true, //! secure für safari test rausnehmen
+        // sameSite: 'none',
+      })
+      .json({
+        success: true,
+        message: 'refresh successful',
+        data: { role: user.role },
+      });
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 }

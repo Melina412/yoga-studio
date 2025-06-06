@@ -1,0 +1,36 @@
+import type { EventType, ResponseType } from '../frontend.types';
+
+// Zustand types
+
+export interface LoginStore {
+  login: boolean;
+  desiredRole: 'admin' | 'staff' | 'customer' | null;
+  setLogin: (value: boolean) => void;
+  setDesiredRole: (value: 'admin' | 'staff' | 'customer' | null) => void;
+}
+
+export interface ResponseStore {
+  loginResponse: ResponseType;
+  checkTokenResponse: ResponseType;
+  checkRefreshTokenResponse: ResponseType;
+  setLoginResponse: (res: ResponseType) => void;
+  setCheckTokenResponse: (res: ResponseType) => void;
+  setCheckRefreshTokenResponse: (res: ResponseType) => void;
+}
+
+export interface AuthStore {
+  authorized: boolean;
+  role: 'admin' | 'staff' | 'customer' | null;
+  setAuthorized: (value: boolean) => void;
+  setRole: (value: 'admin' | 'staff' | 'customer' | null) => void;
+}
+
+export interface CalendarStore {
+  selectedEventId: string | null;
+  setSelectedEventId: (id: string | null) => void;
+}
+
+export interface EventStore {
+  events: EventType[];
+  setEvents: (events: EventType[]) => void;
+}
