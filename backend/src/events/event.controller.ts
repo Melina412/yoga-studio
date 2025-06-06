@@ -5,14 +5,16 @@ import { EventType } from '../types';
 
 //% POST /api/events
 export async function createEvent(req: Request, res: Response): Promise<void> {
-  const { title, date, start, end, location, trainer, info, classId, className, status } = req.body as EventType;
-  console.log('req.body ', req.body);
+  const events = req.body as EventType[];
+  console.log(
+    'req events: ',
+    events[0].title,
+    events.map((e) => e.date)
+  );
 
   try {
-    const event = new Event({ title, date, start, end, location, trainer, info, classId, className, status });
-    await event.save();
-
-    res.status(201).json({ success: true, message: 'event created', data: { event: event } });
+    const docs = await Event.insertMany(events);
+    res.status(201).json({ success: true, message: `${docs.length} event(s) created`, data: { events: events } });
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: 'server error' });
@@ -25,7 +27,7 @@ export async function createEvent(req: Request, res: Response): Promise<void> {
 export async function getEvents(req: Request, res: Response): Promise<void> {
   try {
     const events = await Event.find();
-    console.log('events: ', events);
+    // console.log('events: ', events);
 
     res.status(201).json({ success: true, message: 'events found', data: { events: events } });
   } catch (error) {

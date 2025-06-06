@@ -5,9 +5,12 @@ const EventModal = forwardRef<HTMLDialogElement>((_, dialogRef) => {
   const selectedEventId = useCalendarStore((state) => state.selectedEventId);
   const setSelectedEventId = useCalendarStore((state) => state.setSelectedEventId);
   const events = useEventStore((state) => state.events);
-  const selectedEvent = events.find((e) => e.id === selectedEventId);
+  const selectedEvent = events.find((e) => e._id === selectedEventId);
 
-  //   console.log('selectedEventId im modal:', selectedEventId);
+  console.log('events in modal:', events);
+  console.log('selectedEvent in modal:', selectedEvent);
+
+  console.log('selectedEventId im modal:', selectedEventId);
 
   return (
     <>

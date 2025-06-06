@@ -25,14 +25,24 @@ export interface CalendarStore {
 }
 
 export type EventType = {
-  id: string;
-  title: string;
-  date: string;
-  start: string;
-  end: string;
-  info?: string;
-  color?: string;
-  description?: string;
+  _id?: string | undefined;
+  title: string | undefined;
+  date?: string | undefined;
+  start?: string | undefined;
+  end?: string | undefined;
+  location?: string | undefined;
+  trainer?: string | undefined;
+  info?: string | undefined;
+  classId?: string | undefined;
+  className?: string | undefined;
+  status: string | undefined;
+  recurring: boolean | undefined;
+  daysOfWeek?: number[] | undefined;
+  startTime?: string | undefined;
+  endTime?: string | undefined;
+  startRecur?: string | undefined;
+  endRecur?: string | undefined;
+  groupId?: string | undefined;
 };
 
 export interface EventStore {
