@@ -1,11 +1,14 @@
 import { forwardRef } from 'react';
 import { useCalendarStore, useEventStore } from '../store/store';
+import { useNavigate } from 'react-router-dom';
 
 const EventModal = forwardRef<HTMLDialogElement>((_, dialogRef) => {
   const selectedEventId = useCalendarStore((state) => state.selectedEventId);
   const setSelectedEventId = useCalendarStore((state) => state.setSelectedEventId);
   const events = useEventStore((state) => state.events);
   const selectedEvent = events.find((e) => e._id === selectedEventId);
+
+  const navigate = useNavigate();
 
   console.log('events in modal:', events);
   console.log('selectedEvent in modal:', selectedEvent);
@@ -27,6 +30,11 @@ const EventModal = forwardRef<HTMLDialogElement>((_, dialogRef) => {
 
           <h3 className='font-bold text-lg'>{selectedEvent?.title}</h3>
           <p className='py-4'>{selectedEvent?.info}</p>
+          <div>
+            <button onClick={() => navigate('/dashboard')} className='btn btn-primary'>
+              Diesen Kurs buchen
+            </button>
+          </div>
         </div>
       </dialog>
     </>

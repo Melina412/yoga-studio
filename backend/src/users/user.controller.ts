@@ -11,6 +11,7 @@ import { TokenPayload } from '../types';
 
 export async function getUserData(req: Request, res: Response): Promise<void> {
   const payload = req.payload as TokenPayload;
+  console.log('payload: ', payload);
 
   try {
     const user = await User.findById(payload.user);

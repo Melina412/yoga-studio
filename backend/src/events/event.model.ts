@@ -57,6 +57,17 @@ const eventSchema = new mongoose.Schema({
     endRecur: {
       type: String,
     },
+    eventBookings: {
+      maxNumber: {
+        type: Number,
+      },
+      bookings: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Booking',
+        },
+      ],
+    },
   },
 });
 //! hier noch irgendwie validieren, dass man bei recurring true/false jeweils start bzw. startTime usw. braucht
