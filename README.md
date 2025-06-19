@@ -91,15 +91,16 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [❌] navbar for landingpage etc.
 <br/> [❌] navbar for dashboard
 <br/> [✅] customer dashboard – protected route
-<br/> [❌] staff dashboard – protected route
+<br/> [✅] staff dashboard – protected route
 <br/> [✅] public: view all yoga courses
 <br/> [✅] admin: create single yoga courses
 <br/> [✅] admin: create yoga course series
-<br/> [❌] customer: view my yoga courses
+<br/> [✅] customer: view my yoga courses
 <br/> [❌] customer: cancel booked courses
-<br/> [❌] course booking
+<br/> [✅] course booking
 <br/> [❌] course payments
 <br/> [❌] frontend tests
+<br/> [❌] deployment
 
 ### Backend
 
@@ -119,5 +120,9 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] api/users
 <br/> [✅] api/users/data
 <br/> [✅] api/auth/refresh (refresh token)
+<br/> [✅] api/bookings - createBooking()
+<br/> [✅] api/bookings/user - getUserBookings()
+<br/> [❌] connect bookings with events and user schemas
 <br/> [❌] auth integration tests (logout)
 <br/> [❌] GitHub workflow for tests on pull requests
+<br/> [❌] deployment

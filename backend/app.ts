@@ -8,6 +8,7 @@ import path from 'path';
 import { router as authRouter } from './src/auth/auth.router';
 import { router as eventRouter } from './src/events/event.router';
 import { router as userRouter } from './src/users/user.router';
+import { router as bookingRouter } from './src/bookings/booking.router';
 
 const app = express();
 
@@ -22,5 +23,6 @@ app.use(morgan('dev'));
 app.use('/api/auth', authRouter);
 app.use('/api/events', eventRouter);
 app.use('/api/users', userRouter);
+app.use('/api/bookings', bookingRouter);
 
 export default app;

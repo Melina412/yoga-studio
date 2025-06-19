@@ -3,10 +3,12 @@ import type { Request, Response, NextFunction } from 'express';
 
 export function checkToken(req: Request, res: Response, next: NextFunction) {
   const token = req.cookies.accessCookie;
+  // console.log('token: ', token);
+
   token ? console.log('checkToken: ✅', token.slice(-5)) : console.log('checkToken: ❌, no access token');
   try {
     req.payload = verifyToken(token);
-    console.log('access token payload:', req.payload);
+    // console.log('access token payload:', req.payload);
     next();
   } catch (error) {
     console.log('checkToken: ❌', error.message);

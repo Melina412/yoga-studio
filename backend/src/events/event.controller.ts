@@ -35,7 +35,3 @@ export async function getEvents(req: Request, res: Response): Promise<void> {
     res.status(500).json({ success: false, message: 'server error' });
   }
 }
-
-//% GET /api/events/user
-// gebuchte events eines users
-//!  aus den user daten nehmen
