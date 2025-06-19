@@ -16,9 +16,13 @@ export const useResponseStore = create<ResponseStore>((set) => ({
   loginResponse: null,
   checkTokenResponse: null,
   checkRefreshTokenResponse: null,
+  addBookingResponse: null,
+  myBookingsResponse: null,
   setLoginResponse: (res) => set({ loginResponse: res }),
   setCheckTokenResponse: (res) => set({ checkTokenResponse: res }),
   setCheckRefreshTokenResponse: (res) => set({ checkRefreshTokenResponse: res }),
+  setAddBookingResponse: (res) => set({ addBookingResponse: res }),
+  setMyBookingsResponse: (res) => set({ myBookingsResponse: res }),
 }));
 
 export const useAuthStore = create<AuthStore>((set) => ({

@@ -7,7 +7,7 @@ const bookingSchema = new mongoose.Schema({
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    // ref brauche ich nicht, userdaten werden hier vorerst nicht benötigt
+    ref: 'User',
   },
   createdAt: {
     type: Date,

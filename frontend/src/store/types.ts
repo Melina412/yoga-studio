@@ -14,9 +14,13 @@ export interface ResponseStore {
   loginResponse: ResponseType;
   checkTokenResponse: ResponseType;
   checkRefreshTokenResponse: ResponseType;
+  addBookingResponse: ResponseType;
+  myBookingsResponse: ResponseType;
   setLoginResponse: (res: ResponseType) => void;
   setCheckTokenResponse: (res: ResponseType) => void;
   setCheckRefreshTokenResponse: (res: ResponseType) => void;
+  setAddBookingResponse: (res: ResponseType) => void;
+  setMyBookingsResponse: (res: ResponseType) => void;
 }
 
 export interface AuthStore {
