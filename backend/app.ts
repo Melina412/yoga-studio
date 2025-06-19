@@ -17,8 +17,15 @@ app.use(cors({ origin: process.env.ALLOWED_ORIGIN, credentials: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-// const FRONTEND_DIR = path.join(__dirname, '../../frontend/dist');
-// app.use(express.static(FRONTEND_DIR));
+const PROJECT_ROOT = process.cwd();
+console.log({ PROJECT_ROOT });
+
+const directory = __dirname;
+console.log({ directory });
+
+const FRONTEND_DIR = path.join(__dirname, './frontend/dist');
+app.use(express.static(FRONTEND_DIR));
+console.log({ FRONTEND_DIR });
 
 app.use('/api/auth', authRouter);
 app.use('/api/events', eventRouter);
