@@ -6,8 +6,22 @@ services:
       - backend
     volumes:
       - mongodata:/data/db
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: yoga_frontend
+    ports:
+      - $FRONTENDPORT:5173
+    networks:
+      - frontend
+    volumes:
+      - ./frontend:/app
+
   backend:
-    build: ./backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: yoga_server
     ports:
       - $BACKENDPORT:3000
@@ -18,19 +32,13 @@ services:
       - MONGODB_URI=$MONGODB
     volumes:
       - ./backend:/app
+      - ./frontend/dist:/app/frontend/dist
     depends_on:
       - database
-  frontend:
-    build: ./frontend
-    container_name: yoga_frontend
-    ports:
-      - $FRONTENDPORT:5173
-    networks:
-      - frontend
-    volumes:
-      - ./frontend:/app
+
 networks:
   backend:
   frontend:
+
 volumes:
   mongodata:

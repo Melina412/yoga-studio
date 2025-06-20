@@ -17,8 +17,20 @@ app.use(cors({ origin: process.env.ALLOWED_ORIGIN, credentials: true }));
 app.use(cookieParser());
 app.use(morgan('dev'));
 
-// const FRONTEND_DIR = path.join(__dirname, '../../frontend/dist');
-// app.use(express.static(FRONTEND_DIR));
+// FOR PRODUCTION -------------------------------------------------------------
+const PROJECT_ROOT = process.cwd();
+const directory = __dirname; // -> /app/dist/server.js
+const FRONTEND_DIR = path.join(__dirname, '../frontend/dist'); // -> /app/frontend/dist
+// in der Dockerfile wird das backend zu app des runtime containers
+// das frontend wird dann nach frontend/dist IM app ordner kopiert
+// die pfade unterscheiden sich also zum lokalen projektaufbau
+
+app.use(express.static(FRONTEND_DIR));
+
+console.log({ PROJECT_ROOT });
+console.log({ directory });
+console.log({ FRONTEND_DIR });
+// ----------------------------------------------------------------------------
 
 app.use('/api/auth', authRouter);
 app.use('/api/events', eventRouter);
