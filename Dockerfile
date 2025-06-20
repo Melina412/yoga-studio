@@ -8,6 +8,7 @@ FROM base AS build-frontend
 WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
+ENV VITE_BACKENDURL=https://site--yoga-studio--wczbkl6jmjwc.code.run
 COPY frontend/ ./
 RUN npm run build
 
