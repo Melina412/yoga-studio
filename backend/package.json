@@ -4,8 +4,9 @@
   "main": "app.ts",
   "scripts": {
     "dev": "nodemon",
-    "build": "tsc",
-    "build:frontend": "cd ../frontend && npm run build",
+    "build": "tsc && cd ../frontend && npm i && npm run build",
+    "build:backend": "tsc",
+    "build:frontend": "cd ../frontend && npm i && npm run build",
     "start": "node dist/server.js",
     "test": "vitest",
     "test:unit": "vitest run './tests/unit'",
