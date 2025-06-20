@@ -23,7 +23,7 @@ console.log({ PROJECT_ROOT });
 const directory = __dirname;
 console.log({ directory });
 
-const FRONTEND_DIR = path.join(__dirname, '../../frontend/dist');
+const FRONTEND_DIR = path.join(__dirname, '../frontend/dist');
 app.use(express.static(FRONTEND_DIR));
 console.log({ FRONTEND_DIR });
 
