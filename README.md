@@ -100,7 +100,6 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [✅] course booking
 <br/> [❌] course payments
 <br/> [❌] frontend tests
-<br/> [❌] deployment
 
 ### Backend
 
@@ -125,4 +124,19 @@ Sarah hat vor Kurzem ihr erstes eigenes Yoga-Studio eröffnet. Sie hat zwei ange
 <br/> [❌] connect bookings with events and user schemas
 <br/> [❌] auth integration tests (logout)
 <br/> [❌] GitHub workflow for tests on pull requests
-<br/> [❌] deployment
+
+### Deployment
+
+[✅] deployment frontend
+<br/> [✅] deployment backend
+<br/> [❌] improve Docker file structure
+
+## DEV VS. PRODUCTION MODE / Dockerfiles
+
+_DEV_
+
+Für die lokale Entwicklung nutze ich Docker. Hierfür gibt es im Frontend und Backend jeweils eine Dockerfile, mit der für beide Unterordner jeweils ein Image erstellt wird. Im Projektordner baut die <docker-compose.yml> damit dann die lokale Entwicklungsumgebung auf.
+
+_PRODUCTION_
+
+Für das Deployment habe ich mich erstmals für Northflank entschieden, weil man ein Projekt kostenfrei hosten kann und es trotzdem dauerhaft erreichbar ist. Nach diversen fehlgeschlagenen Versuchen mit Buildpack habe ich letztendlich für den Build auch eine Dockerfile genutzt. Deswegen gibt es im Projektordner auch noch eine davon. Die Dateistruktur wird noch optimiert, aber die App ist jetzt online 🥳
