@@ -6,7 +6,7 @@ import { log } from 'console';
 
 const PORT = process.env.PORT || 3000;
 
-const FRONTEND_INDEX = path.join(__dirname, './frontend/dist/index.html');
+const FRONTEND_INDEX = path.join(__dirname, '../frontend/dist/index.html');
 log({ FRONTEND_INDEX });
 
 app.get('*', (_, res) => {
