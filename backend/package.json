@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
+    "build:frontend": "cd ../frontend && npm run build",
     "start": "node dist/server.js",
     "test": "vitest",
     "test:unit": "vitest run './tests/unit'",
