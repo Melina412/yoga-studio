@@ -32,27 +32,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setRole: (value) => set({ role: value }),
 }));
 
-// export const useCalendarStore = create<CalendarStore>((set) => ({
-//   selectedEventId: null,
-//   setSelectedEventId: (id) => set({ selectedEventId: id }),
-// }));
-
-export const useEventStore = create<EventStore>((set, get) => ({
+export const useEventStore = create<EventStore>((set) => ({
   events: [],
   setEvents: (events) => set({ events }),
 
   selectedEventId: null,
   setSelectedEventId: (id) => set({ selectedEventId: id }),
-
-  // selectedEvent: null,
-  // selectedEvent: () => {
-  //   const { events, selectedEventId } = get();
-  //   return events.find((e) => e._id === selectedEventId) || null;
-  // },
-  // setSelectedEvent: () => {
-  //   const { events, selectedEventId } = get();
-  //   return events.find((e) => e._id === selectedEventId) || null;
-  // },
 }));
 
 export const useTriggerStore = create<TriggerStore>((set) => ({

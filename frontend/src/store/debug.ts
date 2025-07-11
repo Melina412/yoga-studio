@@ -13,7 +13,6 @@ const debugStore = () => {
   console.log('%c' + 'authorized', textStyle, useAuthStore.getState().authorized);
   console.log('%c' + 'events', textStyle, useEventStore.getState().events);
   console.log('%c' + 'selectedEventId', textStyle, useEventStore.getState().selectedEventId);
-  // console.log('%c' + 'selectedEvent', textStyle, useEventStore.getState().selectedEvent);
 
   console.log('%c ****************************************************** ', bgStyle);
 };

@@ -5,22 +5,15 @@ import type { EventType } from '../frontend.types';
 const CourseBooking = () => {
   const selectedEventId = useEventStore((state) => state.selectedEventId);
   const events = useEventStore((state) => state.events);
-  // const selectedEvent = useEventStore((state) => state.selectedEvent());
-  // const selectedEvent = useEventStore((state) => state.selectedEvent);
-
-  // const selectedEvent = useEventStore((state) => state.selectedEvent);
-  // const setSelectedEvent = useEventStore((state) => state.setSelectedEvent);
   const setTrigger = useTriggerStore((state) => state.setTriggerGetMyBookings);
   const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
 
   useEffect(() => {
     if (selectedEventId && events) {
-      console.log('selectedEventId in uef:', selectedEventId);
-      console.log('events in uef:', events);
-
       const selectedEvent = events?.find((e) => e._id === selectedEventId) || null;
-      console.log('selectedEvent in uef:', selectedEvent);
-
+      // console.log('selectedEventId in uef:', selectedEventId);
+      // console.log('events in uef:', events);
+      // console.log('selectedEvent in uef:', selectedEvent);
       setSelectedEvent(selectedEvent);
     }
   }, []);
@@ -30,7 +23,7 @@ const CourseBooking = () => {
 
   const response = useResponseStore((state) => state.addBookingResponse);
   const setResponse = useResponseStore((state) => state.setAddBookingResponse);
-  console.log('response in courseBooking:', response);
+  // console.log('response in courseBooking:', response);
 
   async function addBooking() {
     try {

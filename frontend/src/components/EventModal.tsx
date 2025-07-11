@@ -6,15 +6,13 @@ const EventModal = forwardRef<HTMLDialogElement>((_, dialogRef) => {
   const selectedEventId = useEventStore((state) => state.selectedEventId);
   const setSelectedEventId = useEventStore((state) => state.setSelectedEventId);
   const events = useEventStore((state) => state.events);
-  // const selectedEvent = useEventStore.getState().selectedEvent();
   const selectedEvent = events.find((e) => e._id === selectedEventId) || null;
 
   const navigate = useNavigate();
 
   // console.log('events in modal:', events);
-  console.log('selectedEvent in modal:', selectedEvent);
-
-  console.log('selectedEventId im modal:', selectedEventId);
+  // console.log('selectedEvent in modal:', selectedEvent);
+  // console.log('selectedEventId im modal:', selectedEventId);
 
   const handleButtonClick = () => {
     setSelectedEventId(selectedEventId);

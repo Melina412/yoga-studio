@@ -9,9 +9,6 @@ const CustomerDashboard = () => {
 
   const navigate = useNavigate();
 
-  // const events = useEventStore((state) => state.events);
-  // const selectedEvent = events.find((e) => e._id === selectedEventId);
-
   return (
     <>
       <h1 className='text-2xl text-center m-auto my-10'>Customer Dashboard</h1>
