@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { LoginStore, ResponseStore, AuthStore, EventStore } from './types';
+import type { LoginStore, ResponseStore, AuthStore, EventStore, TriggerStore } from './types';
 import { getRoleFromLocation } from '../utils/utils';
 
 export const useLoginStore = create<LoginStore>((set) => ({
@@ -53,4 +53,9 @@ export const useEventStore = create<EventStore>((set, get) => ({
   //   const { events, selectedEventId } = get();
   //   return events.find((e) => e._id === selectedEventId) || null;
   // },
+}));
+
+export const useTriggerStore = create<TriggerStore>((set) => ({
+  triggerGetMyBookings: false,
+  setTriggerGetMyBookings: (value) => set({ triggerGetMyBookings: value }),
 }));

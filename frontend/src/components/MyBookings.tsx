@@ -1,10 +1,14 @@
 import { useEffect } from 'react';
-import { useResponseStore, useEventStore } from '../store/store';
+import { useResponseStore, useEventStore, useTriggerStore } from '../store/store';
 import Calendar from './Calendar';
 
 const MyBookings = () => {
   const response = useResponseStore((state) => state.myBookingsResponse);
   const setResponse = useResponseStore((state) => state.setMyBookingsResponse);
+
+  const trigger = useTriggerStore((state) => state.triggerGetMyBookings);
+  const setTrigger = useTriggerStore((state) => state.setTriggerGetMyBookings);
+  console.log('trigger in myBookings:', trigger);
 
   const events = useEventStore((state) => state.events);
   const setEvents = useEventStore((state) => state.setEvents);
@@ -22,6 +26,7 @@ const MyBookings = () => {
         setResponse(response);
         setEvents(response.data.bookings.map((booking: any) => booking.event));
         //! type für booking noch analog relevanter felder festlegen
+        setTrigger(false);
       }
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -30,7 +35,7 @@ const MyBookings = () => {
 
   useEffect(() => {
     getMyBookings();
-  }, []);
+  }, [trigger]);
 
   return (
     <>

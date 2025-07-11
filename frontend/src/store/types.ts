@@ -55,3 +55,8 @@ export interface EventStore {
   // selectedEvent: () => EventType | null;
   // setSelectedEvent: () => EventType | null;
 }
+
+export interface TriggerStore {
+  triggerGetMyBookings: boolean;
+  setTriggerGetMyBookings: (value: boolean) => void;
+}

@@ -1,4 +1,4 @@
-import { useEventStore, useResponseStore } from '../store/store';
+import { useEventStore, useResponseStore, useTriggerStore } from '../store/store';
 import { useEffect, useState } from 'react';
 import type { EventType } from '../frontend.types';
 
@@ -10,20 +10,20 @@ const CourseBooking = () => {
 
   // const selectedEvent = useEventStore((state) => state.selectedEvent);
   // const setSelectedEvent = useEventStore((state) => state.setSelectedEvent);
-
+  const setTrigger = useTriggerStore((state) => state.setTriggerGetMyBookings);
   const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
 
   useEffect(() => {
-    if (selectedEventId) {
+    if (selectedEventId && events) {
       console.log('selectedEventId in uef:', selectedEventId);
       console.log('events in uef:', events);
 
-      const selectedEvent = events.find((e) => e._id === selectedEventId) || null;
+      const selectedEvent = events?.find((e) => e._id === selectedEventId) || null;
       console.log('selectedEvent in uef:', selectedEvent);
 
       setSelectedEvent(selectedEvent);
     }
-  }, [events, selectedEventId]);
+  }, []);
 
   console.log('selected ID in courseBooking:', selectedEventId);
   console.log('selectedEvent in courseBooking:', selectedEvent);
@@ -50,6 +50,7 @@ const CourseBooking = () => {
           setResponse(null);
           useEventStore.setState({ selectedEventId: null });
         }, 3000);
+        setTrigger(true);
       }
     } catch (error) {
       console.error(error);
