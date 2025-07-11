@@ -30,12 +30,28 @@ export interface AuthStore {
   setRole: (value: 'admin' | 'staff' | 'customer' | null) => void;
 }
 
-export interface CalendarStore {
-  selectedEventId: string | null;
-  setSelectedEventId: (id: string | null) => void;
-}
+// export interface CalendarStore {
+//   selectedEventId: string | null;
+//   setSelectedEventId: (id: string | null) => void;
+// }
+
+// export interface EventStore {
+//   events: EventType[];
+//   setEvents: (events: EventType[]) => void;
+
+//   selectedEventId: string | null;
+//   setSelectedEventId: (id: string | null) => void;
+
+//   selectedEvent: () => EventType | null;
+// }
 
 export interface EventStore {
   events: EventType[];
   setEvents: (events: EventType[]) => void;
+
+  selectedEventId: string | null;
+  setSelectedEventId: (id: string | null) => void;
+
+  // selectedEvent: () => EventType | null;
+  // setSelectedEvent: () => EventType | null;
 }

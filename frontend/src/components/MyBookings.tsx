@@ -8,7 +8,7 @@ const MyBookings = () => {
 
   const events = useEventStore((state) => state.events);
   const setEvents = useEventStore((state) => state.setEvents);
-  console.log('events in myBookings:', events);
+  // console.log('events in myBookings:', events);
 
   async function getMyBookings() {
     try {

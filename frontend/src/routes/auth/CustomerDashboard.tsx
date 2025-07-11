@@ -1,11 +1,11 @@
 import CourseBooking from '../../components/CourseBooking';
 import MyBookings from '../../components/MyBookings';
-import { useCalendarStore } from '../../store/store';
+import { useEventStore } from '../../store/store';
 import { useNavigate } from 'react-router-dom';
 
 const CustomerDashboard = () => {
-  const selectedEventId = useCalendarStore((state) => state.selectedEventId);
-  console.log('selectedEventId:', selectedEventId);
+  const selectedEventId = useEventStore((state) => state.selectedEventId);
+  console.log('selectedEventId im Dashboard:', selectedEventId);
 
   const navigate = useNavigate();
 

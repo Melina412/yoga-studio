@@ -1,19 +1,25 @@
 import { forwardRef } from 'react';
-import { useCalendarStore, useEventStore } from '../store/store';
+import { useEventStore } from '../store/store';
 import { useNavigate } from 'react-router-dom';
 
 const EventModal = forwardRef<HTMLDialogElement>((_, dialogRef) => {
-  const selectedEventId = useCalendarStore((state) => state.selectedEventId);
-  const setSelectedEventId = useCalendarStore((state) => state.setSelectedEventId);
+  const selectedEventId = useEventStore((state) => state.selectedEventId);
+  const setSelectedEventId = useEventStore((state) => state.setSelectedEventId);
   const events = useEventStore((state) => state.events);
-  const selectedEvent = events.find((e) => e._id === selectedEventId);
+  // const selectedEvent = useEventStore.getState().selectedEvent();
+  const selectedEvent = events.find((e) => e._id === selectedEventId) || null;
 
   const navigate = useNavigate();
 
-  console.log('events in modal:', events);
+  // console.log('events in modal:', events);
   console.log('selectedEvent in modal:', selectedEvent);
 
   console.log('selectedEventId im modal:', selectedEventId);
+
+  const handleButtonClick = () => {
+    setSelectedEventId(selectedEventId);
+    navigate('/dashboard');
+  };
 
   return (
     <>
@@ -31,7 +37,7 @@ const EventModal = forwardRef<HTMLDialogElement>((_, dialogRef) => {
           <h3 className='font-bold text-lg'>{selectedEvent?.title}</h3>
           <p className='py-4'>{selectedEvent?.info}</p>
           <div>
-            <button onClick={() => navigate('/dashboard')} className='btn btn-primary'>
+            <button onClick={handleButtonClick} className='btn btn-primary'>
               Diesen Kurs buchen
             </button>
           </div>

@@ -5,13 +5,13 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import deLocale from '@fullcalendar/core/locales/de';
 import EventModal from './EventModal';
 
-import { useCalendarStore } from '../store/store';
+import { useEventStore } from '../store/store';
 
 import '../style/calendar.css';
 
 const Calendar = ({ events }: any) => {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const setSelectedEventId = useCalendarStore((state) => state.setSelectedEventId);
+  const setSelectedEventId = useEventStore((state) => state.setSelectedEventId);
 
   const handleEventClick = (info: any) => {
     info.jsEvent.preventDefault(); // verhindert default click behavior ( link öffnen??)

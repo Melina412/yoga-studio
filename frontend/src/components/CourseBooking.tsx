@@ -1,10 +1,31 @@
-import { useCalendarStore, useEventStore, useResponseStore } from '../store/store';
-import { useEffect } from 'react';
+import { useEventStore, useResponseStore } from '../store/store';
+import { useEffect, useState } from 'react';
+import type { EventType } from '../frontend.types';
 
 const CourseBooking = () => {
-  const selectedEventId = useCalendarStore((state) => state.selectedEventId);
+  const selectedEventId = useEventStore((state) => state.selectedEventId);
   const events = useEventStore((state) => state.events);
-  const selectedEvent = events.find((e) => e._id === selectedEventId);
+  // const selectedEvent = useEventStore((state) => state.selectedEvent());
+  // const selectedEvent = useEventStore((state) => state.selectedEvent);
+
+  // const selectedEvent = useEventStore((state) => state.selectedEvent);
+  // const setSelectedEvent = useEventStore((state) => state.setSelectedEvent);
+
+  const [selectedEvent, setSelectedEvent] = useState<EventType | null>(null);
+
+  useEffect(() => {
+    if (selectedEventId) {
+      console.log('selectedEventId in uef:', selectedEventId);
+      console.log('events in uef:', events);
+
+      const selectedEvent = events.find((e) => e._id === selectedEventId) || null;
+      console.log('selectedEvent in uef:', selectedEvent);
+
+      setSelectedEvent(selectedEvent);
+    }
+  }, [events, selectedEventId]);
+
+  console.log('selected ID in courseBooking:', selectedEventId);
   console.log('selectedEvent in courseBooking:', selectedEvent);
 
   const response = useResponseStore((state) => state.addBookingResponse);
@@ -27,7 +48,7 @@ const CourseBooking = () => {
         setResponse(response);
         setTimeout(() => {
           setResponse(null);
-          useCalendarStore.setState({ selectedEventId: null });
+          useEventStore.setState({ selectedEventId: null });
         }, 3000);
       }
     } catch (error) {
@@ -40,7 +61,7 @@ const CourseBooking = () => {
     if (response.success === true) {
       setTimeout(() => {
         setResponse(null);
-        useCalendarStore.setState({ selectedEventId: null });
+        useEventStore.setState({ selectedEventId: null });
       }, 3000);
     }
   }, [response]);
@@ -60,7 +81,7 @@ const CourseBooking = () => {
             Buchen
           </button>
 
-          <button onClick={() => useCalendarStore.setState({ selectedEventId: null })} className='btn btn-warning'>
+          <button onClick={() => useEventStore.setState({ selectedEventId: null })} className='btn btn-warning'>
             Abbrechen
           </button>
         </>
